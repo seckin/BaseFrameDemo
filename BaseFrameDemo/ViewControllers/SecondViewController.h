@@ -7,7 +7,10 @@
 //
 
 #import "BaseTableViewController.h"
+#import "BaseTableViewCell+ConfigureForMoel.h"
 
 @interface SecondViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate>
+
+@property (strong, nonatomic) NSMutableArray *arrayList;
 
 @end

@@ -7,9 +7,14 @@
 //
 
 #import "SecondViewController.h"
+#import "ArrayDataSource.h"
+#import "BaseTableViewCell.h"
 
 #define kTableViewPullMoreDataThreadholdHeight 44
 #define kPROffsetY 20
+
+#define kCellIdentifier @"cellIdentifier"
+
 
 @interface SecondViewController (){
     
@@ -19,10 +24,12 @@
     BOOL scrolling; //是否正在上拉刷新
     
     UIActivityIndicatorView *_activity;
-    NSMutableArray *_arrayList;
+    
     
     UIImageView *_lightBlueImgV;
 }
+
+@property (strong, nonatomic) ArrayDataSource *dataSource;
 
 
 @end
@@ -41,8 +48,8 @@
 - (void)viewWillAppear:(BOOL)animated{
 
     [super viewWillAppear:animated];
-    
-    _lightBlueImgV.frame = CGRectMake(10, 100, 300, 300);
+     [self requestData];
+   // _lightBlueImgV.frame = CGRectMake(10, 100, 300, 300);
     
 }
 
@@ -73,16 +80,17 @@
     _currentPageNo = 1;
     _isPullRefresh = YES;
     
-    [self requestData];
+   
     
     
-    UIImage *btnBgImg = [UIImage imageNamed:@"news_cellBG.png"];
-    btnBgImg = [btnBgImg resizableImageWithCapInsets:UIEdgeInsetsMake(98, 0, 37, 0)];
-    _lightBlueImgV = [[UIImageView alloc] init];
-    _lightBlueImgV.image = btnBgImg;
-    
-    
-    [self.view addSubview:_lightBlueImgV];
+//    UIImage *btnBgImg = [UIImage imageNamed:@"news_cellBG.png"];
+//    btnBgImg = [btnBgImg resizableImageWithCapInsets:UIEdgeInsetsMake(98, 0, 37, 0)];
+//    _lightBlueImgV = [[UIImageView alloc] init];
+//    _lightBlueImgV.image = btnBgImg;
+//    
+//    
+//    [self.view addSubview:_lightBlueImgV];
+
     
 }
 
@@ -92,13 +100,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+ - (void)setupTableViewDataSource
+{
+    self.dataSource = [[ArrayDataSource alloc] initWithItems:self.arrayList cellIdentifier:kCellIdentifier configureCellBlock:^(BaseTableViewCell *cell, NSObject *object) {
+        NSDictionary *dict = (NSDictionary *)object;
+        [cell configureForPhoto:nil];
+    }];
+    self.tableView.dataSource = self.dataSource;
+}
+
 #pragma mark - Refresh Methods
 
 - (void)requestData
 {
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] init];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    //manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     NSString *url = [NSString stringWithFormat:@"http://prj.morework.cn/wxb/api%@",@"/sys/info"];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [_activity stopAnimating];
@@ -109,6 +126,8 @@
         [self.tableView reloadData];
         scrolling = YES;
         [_refreshControl endRefreshing];
+        
+        [self setupTableViewDataSource];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         scrolling = YES;
         [_refreshControl endRefreshing];
@@ -166,34 +185,31 @@
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-
-    return 5;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-
-    return [_arrayList count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellIdentifier"];
-    NSDictionary *dict = [_arrayList objectAtIndex:indexPath.row];
-    
-    UIView *tempView = [[UIView alloc] init];
-    [cell setBackgroundView:tempView];
-    [cell setBackgroundColor:[UIColor clearColor]];
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-//    cell.textLabel.text = dict[@"name"];
-//    cell.detailTextLabel.text = dict[@"id"];
-    cell.textLabel.text = @"name";
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d",indexPath.row];
-    
-    return cell;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+//
+//    return 5;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+//
+//    return [_arrayList count];
+//}
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+//
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellIdentifier"];
+//    NSDictionary *dict = [_arrayList objectAtIndex:indexPath.row];
+//    
+//    UIView *tempView = [[UIView alloc] init];
+//    [cell setBackgroundView:tempView];
+//    [cell setBackgroundColor:[UIColor clearColor]];
+//    
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    cell.textLabel.text = @"name";
+//    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d",indexPath.row];
+//    
+//    return cell;
+//}
 
 #pragma mark - UITableViewDelegate
 //-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
