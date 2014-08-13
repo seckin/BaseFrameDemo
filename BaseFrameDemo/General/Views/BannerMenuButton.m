@@ -31,7 +31,7 @@
 }
 + (instancetype)buttonWithOrigin:(CGPoint)origin{
 
-    return [[self alloc] initWithFrame:CGRectMake(origin.x, origin.y, 24, 17)];
+    return [[self alloc] initWithFrame:CGRectMake(origin.x, origin.y, 24, 24)];
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -49,15 +49,15 @@
     
     CGFloat height = CGRectGetHeight(self.leftLayer.bounds);
     
-    POPBasicAnimation *positionLeftAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPosition];
-    positionLeftAnimation.duration = 0.3;
-    positionLeftAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(self.bounds),
-                                                                         roundf(CGRectGetMinY(self.bounds)+(height/2)))];
-    
-    POPBasicAnimation *positionRightAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPosition];
-    positionRightAnimation.duration = 0.3;
-    positionRightAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(self.bounds),
-                                                                            roundf(CGRectGetMaxY(self.bounds)-(height/2)))];
+//    POPBasicAnimation *positionLeftAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPosition];
+//    positionLeftAnimation.duration = 0.3;
+//    positionLeftAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(self.bounds),
+//                                                                         roundf(CGRectGetMinY(self.bounds)+(height/2)))];
+//    
+//    POPBasicAnimation *positionRightAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPosition];
+//    positionRightAnimation.duration = 0.3;
+//    positionRightAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(self.bounds),
+//                                                                            roundf(CGRectGetMaxY(self.bounds)-(height/2)))];
     
     POPSpringAnimation *transformLeftAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerRotation];
     transformLeftAnimation.toValue = @(0);
@@ -71,9 +71,9 @@
     transformRightAnimation.springSpeed = 20;
     transformRightAnimation.dynamicsTension = 1000;
     
-    [self.leftLayer pop_addAnimation:positionLeftAnimation forKey:@"positionLeftAnimation"];
+    //[self.leftLayer pop_addAnimation:positionLeftAnimation forKey:@"positionLeftAnimation"];
     [self.leftLayer pop_addAnimation:transformLeftAnimation forKey:@"transformLeftAnimation"];
-    [self.rightLayer pop_addAnimation:positionRightAnimation forKey:@"positionRightAnimation"];
+    //[self.rightLayer pop_addAnimation:positionRightAnimation forKey:@"positionRightAnimation"];
     [self.rightLayer pop_addAnimation:transformRightAnimation forKey:@"transformRightAnimation"];
 }
 
@@ -81,15 +81,15 @@
 
     [self removeAllAnimations];
     
-    CGPoint center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
-    
-    POPBasicAnimation *positionLeftAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPosition];
-    positionLeftAnimation.toValue = [NSValue valueWithCGPoint:center];
-    positionLeftAnimation.duration = 0.3;
-    
-    POPBasicAnimation *positionRightAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPosition];
-    positionRightAnimation.toValue = [NSValue valueWithCGPoint:center];
-    positionRightAnimation.duration = 0.3;
+//    CGPoint center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+//    
+//    POPBasicAnimation *positionLeftAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPosition];
+//    positionLeftAnimation.toValue = [NSValue valueWithCGPoint:center];
+//    positionLeftAnimation.duration = 0.3;
+//    
+//    POPBasicAnimation *positionRightAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPosition];
+//    positionRightAnimation.toValue = [NSValue valueWithCGPoint:center];
+//    positionRightAnimation.duration = 0.3;
     
     POPSpringAnimation *transformLeftAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerRotation];
     transformLeftAnimation.toValue = @(M_PI_4);
@@ -98,14 +98,14 @@
     transformLeftAnimation.dynamicsTension = 1000;
     
     POPSpringAnimation *transformRightAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerRotation];
-    transformRightAnimation.toValue = @(-M_PI_4);
+    transformRightAnimation.toValue = @(M_PI_4);
     transformRightAnimation.springBounciness = 20.0f;
     transformRightAnimation.springSpeed = 20;
     transformRightAnimation.dynamicsTension = 1000;
     
-    [self.leftLayer pop_addAnimation:positionLeftAnimation forKey:@"positionLeftAnimation"];
+    //[self.leftLayer pop_addAnimation:positionLeftAnimation forKey:@"positionLeftAnimation"];
     [self.leftLayer pop_addAnimation:transformLeftAnimation forKey:@"transformLeftAnimation"];
-    [self.rightLayer pop_addAnimation:positionRightAnimation forKey:@"positionRightAnimation"];
+    //[self.rightLayer pop_addAnimation:positionRightAnimation forKey:@"positionRightAnimation"];
     [self.rightLayer pop_addAnimation:transformRightAnimation forKey:@"transformRightAnimation"];
 
 }
@@ -126,18 +126,19 @@
 //    self.alpha = 0.6f;
 //    self.layer.backgroundColor = [[UIColor blackColor] CGColor];
 
-    CGFloat height = 2.f;
+    CGFloat layerHeight = 2.f;
+    CGFloat height = CGRectGetHeight(self.bounds);
     CGFloat width = CGRectGetWidth(self.bounds);
     CGFloat cornerRadius = 1.f;
-    CGColorRef color = [[UIColor blackColor] CGColor];
+    CGColorRef color = [self.tintColor CGColor];
     
     self.leftLayer = [CALayer layer];
-    self.leftLayer.frame = CGRectMake(0, CGRectGetMinY(self.bounds)-(height/2), width, height);
+    self.leftLayer.frame = CGRectMake(0, CGRectGetMidY(self.bounds)-(layerHeight/2), width, layerHeight);
     self.leftLayer.cornerRadius = cornerRadius;
     self.leftLayer.backgroundColor = color;
     
     self.rightLayer = [CALayer layer];
-    self.rightLayer.frame = CGRectMake(CGRectGetMinX(self.bounds)-(width/2), 0, width, height);
+    self.rightLayer.frame = CGRectMake(CGRectGetMidX(self.bounds)-(layerHeight/2), 0, layerHeight, height);
     self.rightLayer.cornerRadius = cornerRadius;
     self.rightLayer.backgroundColor = color;
     
