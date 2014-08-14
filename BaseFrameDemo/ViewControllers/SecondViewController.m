@@ -104,7 +104,7 @@
 {
     self.dataSource = [[ArrayDataSource alloc] initWithItems:self.arrayList cellIdentifier:kCellIdentifier configureCellBlock:^(BaseTableViewCell *cell, NSObject *object) {
         NSDictionary *dict = (NSDictionary *)object;
-        [cell configureForPhoto:nil];
+        //[cell configureForPhoto:nil];
     }];
     self.tableView.dataSource = self.dataSource;
 }

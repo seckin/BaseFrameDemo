@@ -26,6 +26,7 @@
 		180F59A61935D28600A66BBE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180F59A51935D28600A66BBE /* LoginViewController.m */; };
 		180F59A91935DD6B00A66BBE /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180F59A81935DD6B00A66BBE /* FirstViewController.m */; };
 		180F59AC1935DDA000A66BBE /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180F59AB1935DDA000A66BBE /* SecondViewController.m */; };
+		18B8FF2A199B4634008A9D12 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8FF28199B4634008A9D12 /* ThirdViewController.m */; };
 		18C3F7B9199868A5006E2AA3 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C3F7B3199868A5006E2AA3 /* BaseNavigationController.m */; };
 		18C3F7BA199868A5006E2AA3 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C3F7B5199868A5006E2AA3 /* BaseTableViewController.m */; };
 		18C3F7BB199868A5006E2AA3 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C3F7B7199868A5006E2AA3 /* BaseViewController.m */; };
@@ -86,6 +87,8 @@
 		180F59A81935DD6B00A66BBE /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		180F59AA1935DDA000A66BBE /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		180F59AB1935DDA000A66BBE /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		18B8FF27199B4634008A9D12 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
+		18B8FF28199B4634008A9D12 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		18C3F7B2199868A5006E2AA3 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		18C3F7B3199868A5006E2AA3 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		18C3F7B4199868A5006E2AA3 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
@@ -265,6 +268,8 @@
 				180F59A81935DD6B00A66BBE /* FirstViewController.m */,
 				180F59AA1935DDA000A66BBE /* SecondViewController.h */,
 				180F59AB1935DDA000A66BBE /* SecondViewController.m */,
+				18B8FF27199B4634008A9D12 /* ThirdViewController.h */,
+				18B8FF28199B4634008A9D12 /* ThirdViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -495,6 +500,7 @@
 				180F596C1935C9CC00A66BBE /* main.m in Sources */,
 				18C3F7D3199892D4006E2AA3 /* NRDArrayDataSource.m in Sources */,
 				180F59A21935CF2800A66BBE /* URLHelper.m in Sources */,
+				18B8FF2A199B4634008A9D12 /* ThirdViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
