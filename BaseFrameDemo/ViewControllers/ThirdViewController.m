@@ -34,15 +34,12 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor lightGrayColor];
     
-    self.bannerMenuButton.backgroundColor = self.view.tintColor;
-    self.bannerMenuButton.layer.cornerRadius = CGRectGetWidth(self.bannerMenuButton.bounds)/2;
-   [self.bannerMenuButton setTitleColor:[UIColor whiteColor]
-               forState:UIControlStateNormal];
-    self.bannerMenuButton.titleLabel.font = [UIFont fontWithName:@"Avenir-Medium"
-                                           size:22];
+    CGFloat width = CGRectGetMinX(self.view.bounds);
+    CGFloat height = CGRectGetMaxY(self.view.bounds);
+    
+    self.bannerMenuButton = [BannerMenuButton button];
     
     
-    UIPopoverBackgroundView
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,6 +58,21 @@
     springAnimation.springBounciness = 20;
     springAnimation.springSpeed = 20;
     [_cellImgaeView pop_addAnimation:springAnimation forKey:@"center"];
+}
+
+#pragma mark - POPAnimationDelegate
+
+- (void)pop_animationDidApply:(POPDecayAnimation *)anim
+{
+    BOOL isDragViewOutsideOfSuperView = !CGRectContainsRect(self.view.frame, self.dragView.frame);
+    if (isDragViewOutsideOfSuperView) {
+        CGPoint currentVelocity = [anim.velocity CGPointValue];
+        CGPoint velocity = CGPointMake(currentVelocity.x, -currentVelocity.y);
+        POPSpringAnimation *positionAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPosition];
+        positionAnimation.velocity = [NSValue valueWithCGPoint:velocity];
+        positionAnimation.toValue = [NSValue valueWithCGPoint:self.view.center];
+        [self.dragView.layer pop_addAnimation:positionAnimation forKey:@"layerPositionAnimation"];
+    }
 }
 
 @end

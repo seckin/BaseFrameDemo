@@ -26,6 +26,7 @@
 		180F59A61935D28600A66BBE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180F59A51935D28600A66BBE /* LoginViewController.m */; };
 		180F59A91935DD6B00A66BBE /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180F59A81935DD6B00A66BBE /* FirstViewController.m */; };
 		180F59AC1935DDA000A66BBE /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180F59AB1935DDA000A66BBE /* SecondViewController.m */; };
+		1865C894199C4B230061AB51 /* BannerMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1865C893199C4B230061AB51 /* BannerMenuButton.m */; };
 		18B8FF2A199B4634008A9D12 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8FF28199B4634008A9D12 /* ThirdViewController.m */; };
 		18C3F7B9199868A5006E2AA3 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C3F7B3199868A5006E2AA3 /* BaseNavigationController.m */; };
 		18C3F7BA199868A5006E2AA3 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C3F7B5199868A5006E2AA3 /* BaseTableViewController.m */; };
@@ -87,6 +88,8 @@
 		180F59A81935DD6B00A66BBE /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		180F59AA1935DDA000A66BBE /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		180F59AB1935DDA000A66BBE /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		1865C892199C4B230061AB51 /* BannerMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerMenuButton.h; sourceTree = "<group>"; };
+		1865C893199C4B230061AB51 /* BannerMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerMenuButton.m; sourceTree = "<group>"; };
 		18B8FF27199B4634008A9D12 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
 		18B8FF28199B4634008A9D12 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		18C3F7B2199868A5006E2AA3 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
@@ -335,6 +338,8 @@
 		18C3F7D719989DD3006E2AA3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1865C892199C4B230061AB51 /* BannerMenuButton.h */,
+				1865C893199C4B230061AB51 /* BannerMenuButton.m */,
 				18C3F7D819989DDF006E2AA3 /* BaseTableViewCell.h */,
 				18C3F7D919989DDF006E2AA3 /* BaseTableViewCell.m */,
 				18C3F7DA19989DDF006E2AA3 /* BaseTableViewCell.xib */,
@@ -484,6 +489,7 @@
 				180F59AC1935DDA000A66BBE /* SecondViewController.m in Sources */,
 				18C3F7BB199868A5006E2AA3 /* BaseViewController.m in Sources */,
 				18C3F7E21998AD70006E2AA3 /* BaseTableViewCell+ConfigureForMoel.m in Sources */,
+				1865C894199C4B230061AB51 /* BannerMenuButton.m in Sources */,
 				180F59A61935D28600A66BBE /* LoginViewController.m in Sources */,
 				180F59A91935DD6B00A66BBE /* FirstViewController.m in Sources */,
 				180F59761935C9CC00A66BBE /* ViewController.m in Sources */,

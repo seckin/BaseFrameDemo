@@ -31,7 +31,7 @@
 }
 + (instancetype)buttonWithOrigin:(CGPoint)origin{
 
-    return [[self alloc] initWithFrame:CGRectMake(origin.x, origin.y, 24, 24)];
+    return [[self alloc] initWithFrame:CGRectMake(origin.x, origin.y, 44, 44)];
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -121,10 +121,9 @@
 }
 
 - (void)setup{
-    
-//    self.layer.cornerRadius = CGRectGetWidth(self.bounds)/2;
-//    self.alpha = 0.6f;
-//    self.layer.backgroundColor = [[UIColor blackColor] CGColor];
+
+    self.backgroundColor = [UIColor blackColor];
+    self.layer.cornerRadius = CGRectGetWidth(self.bounds)/2;
 
     CGFloat layerHeight = 2.f;
     CGFloat height = CGRectGetHeight(self.bounds);

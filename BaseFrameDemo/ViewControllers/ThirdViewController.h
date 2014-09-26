@@ -7,10 +7,11 @@
 //
 
 #import "BaseViewController.h"
+#import "BannerMenuButton.h"
 
 @interface ThirdViewController : BaseViewController
 
 @property (strong, nonatomic) IBOutlet UIImageView *cellImgaeView;
-@property (strong, nonatomic) IBOutlet UIButton *bannerMenuButton;
+@property (strong, nonatomic) BannerMenuButton *bannerMenuButton;
 
 @end

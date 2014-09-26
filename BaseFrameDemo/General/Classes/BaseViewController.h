@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BannerMenuButton.h"
 
 #define kTimeOutDefault 20
 
@@ -19,6 +20,8 @@ typedef void (^NetworkFailureBlock)(NSError *error);
 
 @property(copy) NetworkSuccessBlock successBlock;
 @property(copy) NetworkFailureBlock failureBlock;
+
+@property (strong, nonatomic) BannerMenuButton *bannerMenuButton;
 
 
 - (void)requestDataWithUrl:(NSString *)url successBlock:(NetworkSuccessBlock)success andFailureBlock:(NetworkFailureBlock)failure;
